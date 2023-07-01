@@ -1,33 +1,57 @@
 import java.io.File;
 
 public class Task1_3_1_1 {
-    //  Закончил на мин 20 15
-    //        Пример _ ППППППППППППППППППППППППППППППППППП
+
+    //        Пример _ ППППППППППППППППППППППППППППППППППП  РАБОТАЕТ, НО БЕЗ ВЛОЖЕННЫХ КЛАССОВ
     public static void main(String[] args) {
         System.out.println("Задание : \n1.\tСоздайте классы с полями для описания структуры университета." +
                 "\n\nРешение: ");
-        System.out.println("Создаем класс UniversityStructure со следующими полями: Факуьтет, Срок обучения (лет)");
-
+        System.out.println("Создаем класс UniversityStructure со следующими полями: Факультет, " +
+                "\nСрок обучения (лет), и внутри него создаем второй класс Tutors со следующими " +
+                "\nполями: Фамилия преподавателя,  Кол-во предметов");
+        System.out.println(); // Это перенос строки
         UniversityStructure universityStructure1 = new UniversityStructure();  // - экземпляр класса
         universityStructure1.faculty = "Юриспруденция";
         universityStructure1.studyPeriod = 3;
+
         UniversityStructure universityStructure2 = new UniversityStructure();  // - экземпляр класса
         universityStructure2.faculty = "Программирование";
         universityStructure2.studyPeriod = 4;
 
-        System.out.println("Факультет: " + universityStructure2.faculty + ", Срок обучения, кол-во лет: " + universityStructure2.studyPeriod);
-        System.out.println(); // Это перенос строки
+        System.out.println("Факультет: " + universityStructure2.faculty + ", Срок обучения (кол-во лет): " + universityStructure2.studyPeriod);
 
-        System.out.println("Создаем второй класс Tutors со следующими полями: Фамилия, Кол-во предметов");
-
-        Tutors tutors1 = new Tutors();  // - экземпляр класса
+        UniversityStructure.Tutors tutors1 = universityStructure2.new Tutors();  // - экземпляр класса
         tutors1.familyName = "Иванов";
         tutors1.academicSubjects = 1;
-        Tutors tutors2 = new Tutors();  // - экземпляр класса
+
+        UniversityStructure.Tutors tutors2 = universityStructure2.new Tutors();  // - экземпляр класса
         tutors2.familyName = "Петров";
         tutors2.academicSubjects = 2;
 
-        System.out.println("Фамилия: " + tutors2.familyName + ", Кол-во предметов: " + tutors2.academicSubjects);
+        System.out.println("Фамилия преподавателя: " + tutors2.familyName + ", Кол-во предметов: " + tutors2.academicSubjects);
+
+
+
+//        UniversityStructure universityStructure1 = new UniversityStructure();  // - экземпляр класса
+//        universityStructure1.faculty = "Юриспруденция";
+//        universityStructure1.studyPeriod = 3;
+//        UniversityStructure universityStructure2 = new UniversityStructure();  // - экземпляр класса
+//        universityStructure2.faculty = "Программирование";
+//        universityStructure2.studyPeriod = 4;
+//
+//        System.out.println("Факультет: " + universityStructure2.faculty + ", Срок обучения, кол-во лет: " + universityStructure2.studyPeriod);
+//        System.out.println(); // Это перенос строки
+//
+//        System.out.println("Создаем второй класс Tutors со следующими полями: Фамилия, Кол-во предметов");
+//
+//        Tutors tutors1 = new Tutors();  // - экземпляр класса
+//        tutors1.familyName = "Иванов";
+//        tutors1.academicSubjects = 1;
+//        Tutors tutors2 = new Tutors();  // - экземпляр класса
+//        tutors2.familyName = "Петров";
+//        tutors2.academicSubjects = 2;
+//
+//        System.out.println("Фамилия преподавателя: " + tutors2.familyName + ", Кол-во предметов: " + tutors2.academicSubjects);
 
 
 
@@ -42,6 +66,60 @@ public class Task1_3_1_1 {
     }
 }
 //        Конец Примера _ КККККККККККККККК
+
+
+
+
+
+
+
+
+//    //        Пример 3 ППППППППППППППППППППППППППППППППППП  РАБОТАЕТ, НО БЕЗ ВЛОЖЕННЫХ КЛАССОВ
+//    public static void main(String[] args) {
+//        System.out.println("Задание : \n1.\tСоздайте классы с полями для описания структуры университета." +
+//                "\n\nРешение: ");
+//        System.out.println("Создаем класс UniversityStructure со следующими полями: Факуьтет, Срок обучения (лет)");
+//
+//        UniversityStructure universityStructure1 = new UniversityStructure();  // - экземпляр класса
+//        universityStructure1.faculty = "Юриспруденция";
+//        universityStructure1.studyPeriod = 3;
+//        UniversityStructure universityStructure2 = new UniversityStructure();  // - экземпляр класса
+//        universityStructure2.faculty = "Программирование";
+//        universityStructure2.studyPeriod = 4;
+//
+//        System.out.println("Факультет: " + universityStructure2.faculty + ", Срок обучения, кол-во лет: " + universityStructure2.studyPeriod);
+//        System.out.println(); // Это перенос строки
+//
+//        System.out.println("Создаем второй класс Tutors со следующими полями: Фамилия, Кол-во предметов");
+//
+//        Tutors tutors1 = new Tutors();  // - экземпляр класса
+//        tutors1.familyName = "Иванов";
+//        tutors1.academicSubjects = 1;
+//        Tutors tutors2 = new Tutors();  // - экземпляр класса
+//        tutors2.familyName = "Петров";
+//        tutors2.academicSubjects = 2;
+//
+//        System.out.println("Фамилия: " + tutors2.familyName + ", Кол-во предметов: " + tutors2.academicSubjects);
+//
+//
+//
+////        String faculty1 = "Юриспруденция";
+////        int studyPeriod1 = 3;
+////        String faculty2 = "Программирование";
+////        int studyPeriod2 = 4;
+////        String faculty3 = "Психология";
+////        int studyPeriod3 = 5;
+////
+////        System.out.println("Факультет: " + faculty3 + ", Срок обучения: " + studyPeriod3 + " лет.");
+//    }
+//}
+////        Конец Примера 3 КККККККККККККККК
+
+
+
+
+
+
 
 
 ////        Пример 2 ППППППППППППППППППППППППППППППППППП
