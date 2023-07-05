@@ -13,7 +13,6 @@ public class Task1_3_1_5 {
     public static void main(String[] args) throws IOException {
         System.out.println("Задание : \n1.\tСохраните снимок дня NASA в свой созданный класc\n\nРешение: ");
 
-
         String pageNasa = downloadWebPage("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
         int urlBegin = pageNasa.lastIndexOf("url");
         int urlEnd = pageNasa.lastIndexOf("}");
@@ -21,14 +20,12 @@ public class Task1_3_1_5 {
         try (InputStream in = new URL(urlPhoto).openStream()) {
             Files.copy(in, Paths.get("photo.jpg"));
         }
-
         System.out.println("\n" + "Картинка сохранена!");
 
         int explanationBegin = pageNasa.lastIndexOf("explanation");
         int explanationEnd = pageNasa.lastIndexOf("hdurl");
         String explanation = pageNasa.substring(explanationBegin + 14, explanationEnd - 3);
         System.out.println("Пояснение к фртографии: \n" + explanation);
-
     }
 
     private static String downloadWebPage(String url) throws IOException {
