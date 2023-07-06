@@ -26,6 +26,8 @@ public class Task1_3_1_5 {
         int explanationEnd = pageNasa.lastIndexOf("hdurl");
         String explanation = pageNasa.substring(explanationBegin + 14, explanationEnd - 3);
         System.out.println("Пояснение к фртографии: \n" + explanation);
+        System.out.println();  // Это перенос строки
+        System.out.println("Создаем класс String downloadWebPage, который позволит нам сохранить изображение в файл.");
     }
 
     private static String downloadWebPage(String url) throws IOException {
