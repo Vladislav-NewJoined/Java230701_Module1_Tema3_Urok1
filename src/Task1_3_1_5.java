@@ -7,27 +7,39 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-//        Пример _ ППППППППППППППППППППППППППППППППППП
 public class Task1_3_1_5 {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Задание : \n1.\tСохраните снимок дня NASA в свой созданный класc\n\nРешение: ");
 
-        String pageNasa = downloadWebPage("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
-        int urlBegin = pageNasa.lastIndexOf("url");
-        int urlEnd = pageNasa.lastIndexOf("}");
-        String urlPhoto = pageNasa.substring(urlBegin + 6, urlEnd - 1);
-        try (InputStream in = new URL(urlPhoto).openStream()) {
+//        System.out.println("Это сохранение обычным способом, без создания отдельного класса: ");
+//        String pageNasa = downloadWebPage("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
+//        int urlBegin = pageNasa.lastIndexOf("url");
+//        int urlEnd = pageNasa.lastIndexOf("}");
+//        String urlPhoto = pageNasa.substring(urlBegin + 6, urlEnd - 1);
+//        try (InputStream in = new URL(urlPhoto).openStream()) {
+//            Files.copy(in, Paths.get("photo.jpg"));
+//        }
+//
+//        int explanationBegin = pageNasa.lastIndexOf("explanation");
+//        int explanationEnd = pageNasa.lastIndexOf("hdurl");
+//        String explanation = pageNasa.substring(explanationBegin + 14, explanationEnd - 3);
+//        System.out.println("Пояснение к фртографии: \n" + explanation);
+
+        //            Сохраняем через отдельно созданный класс SavedPhotoNASA
+        System.out.println("Создаем отдельный класс SavedPhotoNASA и в нём сохраняем фото в файл photo.jpg " +
+                "в корневом каталоге проекта: ");
+        SavedPhotoNASA photoNASA = new SavedPhotoNASA();
+        photoNASA.pageNasa = downloadWebPage("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
+        photoNASA.urlBegin = photoNASA.pageNasa.lastIndexOf("url");
+        photoNASA.urlEnd = photoNASA.pageNasa.lastIndexOf("}");
+        photoNASA.urlPhoto = photoNASA.pageNasa.substring(photoNASA.urlBegin + 6, photoNASA.urlEnd - 1);
+        try (InputStream in = new URL(photoNASA.urlPhoto).openStream()){
             Files.copy(in, Paths.get("photo.jpg"));
         }
-        System.out.println("\n" + "Картинка сохранена!");
 
-        int explanationBegin = pageNasa.lastIndexOf("explanation");
-        int explanationEnd = pageNasa.lastIndexOf("hdurl");
-        String explanation = pageNasa.substring(explanationBegin + 14, explanationEnd - 3);
-        System.out.println("Пояснение к фртографии: \n" + explanation);
-        System.out.println();  // Это перенос строки
-        System.out.println("Создаем класс String downloadWebPage, который позволит нам сохранить изображение в файл.");
+        System.out.println("Картинка сохранена!");
+
     }
 
     private static String downloadWebPage(String url) throws IOException {
@@ -43,4 +55,3 @@ public class Task1_3_1_5 {
         return result.toString();
     }
 }
-//        Конец Примера _ КККККККККККККККК
